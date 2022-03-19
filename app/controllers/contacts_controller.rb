@@ -12,7 +12,11 @@ class ContactsController < ApplicationController
     end
 
     def update
-
+        if @contact.update(contact_params)
+            render json: @contact
+        else
+            render json: @contact.errors, status: unprocessable_entity
+        end
     end
 
     def destroy
