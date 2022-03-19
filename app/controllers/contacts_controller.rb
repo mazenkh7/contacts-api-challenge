@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
     before_action :set_contact, only: [:show, :update, :destroy]
 
     def index
-        @contacts = Contacts.all
+        @contacts = Contact.all
         render json: @contacts
     end
 
@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
     end
 
     def destroy
-
+        @contact.destroy
     end
 
     def create
