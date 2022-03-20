@@ -26,7 +26,7 @@ class ContactsController < ApplicationController
     def create #post and return all contacts
         @contact = Contact.new(contact_params)
         if @contact.save
-            render json: Contact.all
+            render json: @contact
         else
             render json: @contact.errors, status: :unprocessable_entity
         end
