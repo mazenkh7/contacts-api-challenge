@@ -3,8 +3,7 @@ class ContactsController < ApplicationController
     before_action :set_contact, only: [:show, :update, :destroy]
 
     def index
-        @contacts = Contact.all
-        render json: @contacts
+        render json: Contact.all
     end
 
     def show
@@ -21,19 +20,20 @@ class ContactsController < ApplicationController
 
     def destroy
         @contact.destroy
+        render json: Contact.all
     end
 
-    def create
+    def create #post and return all contacts
         @contact = Contact.new(contact_params)
         if @contact.save
-            render json: @contact
+            render json: Contact.all
         else
             render json: @contact.errors, status: :unprocessable_entity
         end
     end
     
     private
-        def set_contact
+        def set_contact 
             @contact = Contact.find(params[:id])
         end
 
