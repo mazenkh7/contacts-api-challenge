@@ -11,10 +11,16 @@ class ContactsController < ApplicationController
     end
 
     def update
-        if @contact.update(contact_params)
-            render json: @contact
-        else
-            render json: @contact.errors, status: unprocessable_entity
+        print("mazzika", @contact.email, " ", contact_params[:email])
+        emailTaken = Contact.exists?(email: contact_params[:email])
+        if (emailTaken && (@contact.email == contact_params[:email])) || !emailTaken #check email not taken
+            if @contact.update(contact_params)
+                render json: @contact
+            else
+                render json: @contact.errors, status: unprocessable_entity
+            end
+        else 
+            render json: @contact.errors, status: :unprocessable_entity
         end
     end
 
@@ -23,12 +29,16 @@ class ContactsController < ApplicationController
         render json: Contact.all
     end
 
-    def create #post and return all contacts
+    def create #post and return all contacts        
         @contact = Contact.new(contact_params)
-        if @contact.save
-            render json: @contact
-        else
-            render json: @contact.errors, status: :unprocessable_entity
+        if !Contact.exists?(email: @contact.email) #check email not taken
+            if @contact.save
+                render json: @contact
+            else
+                render json: @contact.errors, status: :unprocessable_entity
+            end
+        else 
+            render json: @contact.errors, status: :email_exists
         end
     end
     
