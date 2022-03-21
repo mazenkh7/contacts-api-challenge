@@ -1,24 +1,14 @@
 # README
+This is a Contacts API that does CRUD, written in Ruby, Ruby on Rails language.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Live API endpoint link, deployed on Heroku:
+https://contacts-api-challenge.herokuapp.com/contacts
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Useful information on how to run:
+* Ruby version: ruby 3.1.1p18
+* Rails version: Rails 7.0.2.3
+* Database initialization:
+1. Install corresponding PostgreSQL for your OS and create a database (can use PGadmin for database creation).
+2. Modify /config/database.yml to your machine settings (database name that you chose, username, password, host, port)
+3. In project root folder run: rails db:migrate
+4. In project root folder run: rails s -p portnumber (replace portnumber with number of your choosing, probably 8000)
