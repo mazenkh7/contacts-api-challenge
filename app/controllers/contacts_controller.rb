@@ -25,6 +25,7 @@ class ContactsController < ApplicationController
     end
 
     def destroy
+        Edit.where(contactid: @contact.id).destroy_all()
         @contact.destroy
         render json: Contact.all
     end
