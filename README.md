@@ -2,7 +2,8 @@
 This is a Contacts API that does CRUD, written in Ruby, Ruby on Rails language.
 
 # Live API endpoint link, deployed on Heroku:
-https://contacts-api-challenge.herokuapp.com/contacts
+https://contacts-api-challenge.herokuapp.com/
+(add "/contacts" for contacts table or "/edits" for modifications table).
 
 # Useful information on how to run:
 * Ruby version: ruby 3.1.1p18
